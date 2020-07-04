@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXController">
+   <center>
+      <BorderPane prefHeight="396.0" prefWidth="533.0" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fx:id="currentFrame" fitHeight="273.0" fitWidth="326.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <CheckBox fx:id="graysc_box" mnemonicParsing="false" text="Gray" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="25.0" />
+               </BorderPane.margin>
+            </CheckBox>
+         </right>
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <CheckBox fx:id="haar_box" mnemonicParsing="false" onAction="#selectHaar" text="Haar Classifier">
+                     <HBox.margin>
+                        <Insets left="100.0" top="25.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="lbp_box" mnemonicParsing="false" onAction="#selectLBP" text="LBP Classifier">
+                     <HBox.margin>
+                        <Insets left="125.0" top="25.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </center>
+   <bottom>
+      <Button fx:id="start_btn" mnemonicParsing="false" onAction="#startCamera" text="Start Webcam" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>
