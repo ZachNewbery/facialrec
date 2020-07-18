@@ -1,10 +1,10 @@
 package application;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import application.FaceRecogniser;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -47,10 +47,13 @@ public class FXController {
     private int absoluteSmileWidth = 0;
     private int absoluteSmileHeight = 0;
     
+    // facerec variables
+    private FaceRecogniser rec = new FaceRecogniser("dataset/TrainingData.csv");
+    
     private int smileTime = 0;
     
     @FXML
-    protected void startCamera(ActionEvent event) { 
+    protected void startCamera(ActionEvent event) {
         if (!this.capture.isOpened()) {
             this.capture.open(0);
             
@@ -144,6 +147,7 @@ public class FXController {
                 this.smileTime++;
                 if(smileTime >= 60) {
                     Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 255, 0), 3);
+                    System.out.println("Detected Face: " + rec.recogniseFace(frame.submat(facesArray[i])));
                 } else {
                     Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(255, 0, 0), 3);
                 }               
