@@ -147,7 +147,8 @@ public class FXController {
                 this.smileTime++;
                 if(smileTime >= 60) {
                     Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 255, 0), 3);
-                    System.out.println("Detected Face: " + rec.recogniseFace(frame.submat(facesArray[i])));
+                    // NEED TO GRAYSCALE IMAGE FOR RECOGNITION
+                    System.out.println("Detected Face: " + rec.recogniseFace(grayFrame.submat(facesArray[i])));
                 } else {
                     Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(255, 0, 0), 3);
                 }               

@@ -76,6 +76,7 @@ public class FaceRecogniser {
         Size sz = new Size(112, 92);
         Imgproc.resize(face, comp, sz);
         this.model.predict(comp, label, conf);
+        System.out.println("Confidence: " + conf[0]);
         return label[0];
     }
 }
