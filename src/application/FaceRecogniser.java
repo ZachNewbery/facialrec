@@ -69,14 +69,22 @@ public class FaceRecogniser {
         }
     }
     
-    public int recogniseFace(Mat face) {
+    public double[] recogniseFace(Mat face) {
+        double[] results = new double[2];
         Mat comp = new Mat();
         int[] label = new int[1];
         double[] conf = new double[1];
         Size sz = new Size(112, 92);
         Imgproc.resize(face, comp, sz);
         this.model.predict(comp, label, conf);
-        System.out.println("Confidence: " + conf[0]);
-        return label[0];
+        
+        results[0] = label[0];
+        results[1] = convertConf(conf[0]);
+        return results;
+    }
+    
+    public static double convertConf(double conf) {
+        double percent = (10000 - conf)/100;
+        return percent;
     }
 }
